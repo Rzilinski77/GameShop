@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <link href="~/css/ShopStyleSheet.css" rel="stylesheet" />
+@model GameShopDBContext
+<div id="container">
+    <div id="left"><img src="https://www.nicepng.com/png/full/220-2202047_pixilart-simple-by-lazergaming-pixel-sword.png" height="110" width="110"></div>
+    <div id="right"><img src="https://www.nicepng.com/png/full/220-2202047_pixilart-simple-by-lazergaming-pixel-sword.png" height="110" width="110"/></div>
+    <div id="center">Shop</div>
+</div>
+<br />
+<table>
+    <!--the tr gave us a table row to keep seperate from other tables rows-->
+    <tr>
+        <!--the tr gave us a table header allows us to name our columns of data-->
+        <th><h1>Name&nbsp;</h1></th>
+        <th><h1>Description&nbsp;</h1></th>
+        <th><h1>Stock&nbsp;</h1></th>
+        <th><h1>Price&nbsp;</h1></th>
+        <th><h1></h1></th>
+    </tr>
+
+    @foreach (Items item in Model.Items)
+    {
+        <tr>
+            <td>@item.Name&nbsp;</td>
+            <td>@item.Description&nbsp;</td>
+            <td>@item.Quantity&nbsp;</td>
+            <td>@item.Price&nbsp;</td>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td><button onclick="location.href='@Url.Action("Buy", "Home", new { itemPrice = item.Price, quantity = item.Quantity - 1, name = item.Name})'" type="button" class="btn btn-outline-success">Purchase</button></td>
+            }
+            else
+            {
+                <td>Login to Shop!</td>
+            }
+        </tr>
+    }
+</table>
+

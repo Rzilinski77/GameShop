@@ -1,0 +1,32 @@
+﻿body {
+}
+#container {
+    width: 100%;
+}
+
+#left {
+    float: left;
+    padding-left: 200px;
+    padding-top: 20px;
+    width: 100px;
+}
+
+#right {
+    padding-right: 300px;
+    padding-top: 20px;
+    float: right;
+    width: 100px;
+}
+#center {
+    margin: 0 auto;
+    width: 250px;
+    font-size: 100px;
+}
+
+table {
+    border: 3px solid #4cff00;
+    text-align: center;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
